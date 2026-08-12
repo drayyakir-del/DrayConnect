@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הצהרת נגישות | DrayConnect</title>
+  <meta name="description" content="הצהרת הנגישות של DrayConnect בהתאם לתקן הישראלי ת&quot;י 5568 (WCAG 2.0 AA) ותקנות שוויון זכויות לאנשים עם מוגבלות.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Rubik:wght@400;500;600;700&family=Heebo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem('drayconnect_a11y_v1');
+        if (!raw) return;
+        var p = JSON.parse(raw);
+        if (p.version !== 1) return;
+        var c = document.documentElement.classList;
+        c.toggle('a11y-links', !!p.links);
+        c.toggle('a11y-contrast-high', p.contrast === 'high');
+        c.toggle('a11y-contrast-invert', p.contrast === 'invert');
+        c.toggle('a11y-contrast-mono', p.contrast === 'mono');
+        c.toggle('a11y-text-115', p.textSize === 115);
+        c.toggle('a11y-text-130', p.textSize === 130);
+        c.toggle('a11y-text-150', p.textSize === 150);
+        c.toggle('a11y-lines-16', p.lineSpacing === 16);
+        c.toggle('a11y-lines-20', p.lineSpacing === 20);
+        c.toggle('a11y-readable-font', !!p.readableFont);
+        c.toggle('a11y-highlight-headings', !!p.highlightHeadings);
+        c.toggle('a11y-cursor-black', !!p.cursorBlack);
+        c.toggle('a11y-cursor-large', !!p.cursorLarge);
+        c.toggle('a11y-reduce-motion', !!p.reduceMotion);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <header>
+    <nav id="nav" class="scrolled" aria-label="ניווט ראשי">
+      <a href="index.html" class="logo" aria-label="DrayConnect, לדף הבית">DRAY<span>CONNECT</span></a>
+      <ul class="nav-links">
+        <li class="nav-cta-li"><a href="index.html" class="nav-cta">חזרה לאתר</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <article class="legal" lang="he" dir="rtl">
+      <span class="section-tag">מחויבות לכולם</span>
+      <h1>הצהרת נגישות</h1>
+
+      <p>ב-DrayConnect אנו רואים חשיבות רבה במתן שירות שוויוני ונגיש לכלל הלקוחות, לרבות אנשים עם מוגבלות. אנו פועלים להנגשת האתר בהתאם ל<strong>תקן הישראלי ת"י 5568</strong>, המעוגן בהנחיות <strong>WCAG 2.0 ברמת AA</strong>, ובהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013.</p>
+
+      <h2>רמת ההנגשה</h2>
+      <p>האתר הונגש לרמת התאמה AA לפי ת"י 5568. ההנגשה בוצעה באמצעים טכנולוגיים המובנים באתר עצמו, ולא באמצעות תוסף חיצוני מסוג "overlay".</p>
+
+      <h2>אמצעי הנגישות באתר</h2>
+      <ul>
+        <li>מבנה סמנטי תקין עם אזורי ניווט (landmarks) וכותרות בהיררכיה הגיונית.</li>
+        <li>ניווט מלא באמצעות מקלדת, כולל קישור "דלג לתוכן הראשי" וסימון פוקוס ברור.</li>
+        <li>תאימות לקוראי מסך נפוצים (NVDA, JAWS, VoiceOver) בעברית ובכיווניות RTL.</li>
+        <li>טקסט חלופי לתמונות, ותוויות (labels) מקושרות לכל שדות הטופס.</li>
+        <li>הודעות שגיאה בטופס בעברית, המוקראות על ידי קוראי מסך.</li>
+        <li>ניגודיות צבעים העומדת ביחס של 4.5:1 לפחות לטקסט רגיל.</li>
+        <li>תפריט התאמות נגישות אישי (מופעל בכפתור צף או בקיצור Alt+A): ניגודיות גבוהה, היפוך צבעים, שחור-לבן, הגדלת טקסט, הגדלת מרווח שורות, גופן קריא, הדגשת קישורים וכותרות, סמן מוגדל ועצירת אנימציות.</li>
+        <li>כיבוד העדפת המערכת להפחתת תנועה (prefers-reduced-motion).</li>
+      </ul>
+      <p class="legal-note">תפריט ההתאמות הוא כלי נוחות אישי לבחירת המשתמש בלבד. הוא אינו "מתקן" את האתר אוטומטית, והנגשת האתר אינה מסתמכת עליו.</p>
+
+      <h2>מגבלות נגישות ידועות</h2>
+      <p>אנו משתדלים לתחזק את נגישות האתר באופן שוטף. עם זאת, ייתכן שחלקים מסוימים בתוכן שמקורו בצד שלישי, או תמונות שהוזנו לאחרונה, טרם הונגשו במלואם. אנו פועלים לתיקון ליקויים אלו. אם נתקלתם ברכיב שאינו נגיש, נשמח שתפנו אלינו ונטפל בכך בהקדם.</p>
+
+      <h2>דרכי פנייה בנושא נגישות</h2>
+      <p>נתקלתם בבעיית נגישות, או שיש לכם הצעה לשיפור? רכז הנגישות שלנו ישמח לעמוד לרשותכם:</p>
+      <ul class="legal-contact">
+        <li>רכז נגישות: <strong>יקיר דריי</strong></li>
+        <li>טלפון: <a href="tel:0528985233" dir="ltr"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg> 052-898-5233</a></li>
+        <li>דוא"ל: <a href="mailto:yakirdray1@gmail.com"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg> yakirdray1@gmail.com</a></li>
+      </ul>
+      <p>בפנייתכם נסו לפרט את הבעיה, הדף שבו נתקלתם בה, וסוג הטכנולוגיה המסייעת שבה אתם משתמשים (אם רלוונטי). כך נוכל לסייע במהירות.</p>
+
+      <h2>עדכון ההצהרה</h2>
+      <p>תאריך ביקורת הנגישות האחרונה: <time datetime="2026-07-11">11 ביולי 2026</time>.</p>
+      <p>תאריך עדכון ההצהרה: <time datetime="2026-07-11">11 ביולי 2026</time>.</p>
+
+      <p class="legal-back"><a href="index.html" class="btn-secondary">חזרה לאתר <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="foot-contact">
+      <a href="tel:0528985233"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg> 052-898-5233</a>
+      <a href="mailto:yakirdray1@gmail.com"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg> yakirdray1@gmail.com</a>
+    </div>
+    <span>© 2026 DrayConnect. כל הזכויות שמורות.</span>
+    <span class="foot-brand">DrayConnect</span>
+  </footer>
+
+  <script src="a11y.js" defer></script>
+</body>
+</html>

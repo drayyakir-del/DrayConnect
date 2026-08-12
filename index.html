@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DrayConnect | בית חכם בלחיצת כפתור</title>
+  <meta name="description" content="DrayConnect מתקינה בתים חכמים: מנורות, מצלמות, שקעים ודוד חכם. ייעוץ חינם, התקנה מקצועית והגדרת Tuya. קבלו הצעת מחיר תוך 24 שעות.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Rubik:wght@400;500;600;700&family=Heebo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Accessibility prefs bootstrap: applies saved user preferences before first paint (no flash) -->
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem('drayconnect_a11y_v1');
+        if (!raw) return;
+        var p = JSON.parse(raw);
+        if (p.version !== 1) return;
+        var c = document.documentElement.classList;
+        c.toggle('a11y-links', !!p.links);
+        c.toggle('a11y-contrast-high', p.contrast === 'high');
+        c.toggle('a11y-contrast-invert', p.contrast === 'invert');
+        c.toggle('a11y-contrast-mono', p.contrast === 'mono');
+        c.toggle('a11y-text-115', p.textSize === 115);
+        c.toggle('a11y-text-130', p.textSize === 130);
+        c.toggle('a11y-text-150', p.textSize === 150);
+        c.toggle('a11y-lines-16', p.lineSpacing === 16);
+        c.toggle('a11y-lines-20', p.lineSpacing === 20);
+        c.toggle('a11y-readable-font', !!p.readableFont);
+        c.toggle('a11y-highlight-headings', !!p.highlightHeadings);
+        c.toggle('a11y-cursor-black', !!p.cursorBlack);
+        c.toggle('a11y-cursor-large', !!p.cursorLarge);
+        c.toggle('a11y-reduce-motion', !!p.reduceMotion);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Skip link (IS 5568 / WCAG 2.4.1) -->
+  <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+
+  <!-- ICON SPRITE (Phosphor-style stroke set) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></symbol>
+      <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16 9.5 21 7v10l-5-2.5"/></symbol>
+      <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6"/><path d="M7 8h10v3a5 5 0 0 1-10 0Z"/><path d="M12 16v6"/></symbol>
+      <symbol id="i-water" viewBox="0 0 24 24"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11Z"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></symbol>
+      <symbol id="i-temp" viewBox="0 0 24 24"><path d="M12 14V4a2 2 0 0 0-4 0v10a4 4 0 1 0 4 0Z"/><path d="M14 8h4M14 12h3"/></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h9.1a1.5 1.5 0 0 0 1.5-1.2L21 7H5.5"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6Z"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-6h4v6"/></symbol>
+      <symbol id="i-package" viewBox="0 0 24 24"><path d="M3 8 12 3l9 5v8l-9 5-9-5Z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+      <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1-2 5-2 5s4-.5 5-2c.6-.9.5-2.1-.4-2.9-.9-.8-2-.7-2.6.9Z"/><path d="M9 15l-3-3c1-5 4-8 9-9 1 5-2 8-6 12Z"/><circle cx="14.5" cy="8.5" r="1.3"/></symbol>
+      <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5Z"/></symbol>
+      <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14 6.5a3.5 3.5 0 0 1 4.7 4.2L21 13l-2 2-2.3-2.3a3.5 3.5 0 0 1-4.2-4.7"/><path d="M12.5 10.5 4 19l1 1 8.5-8.5"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5 9 17.5 20 6.5"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4Z"/><path d="M8 9h8M8 12h5"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2Z"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+      <symbol id="i-app" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6Z"/><path d="M9 12l2 2 4-4"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- NAV -->
+  <header>
+    <nav id="nav" aria-label="ניווט ראשי">
+      <a href="#" class="logo" aria-label="DrayConnect, לדף הבית">DRAY<span>CONNECT</span></a>
+      <ul class="nav-links">
+        <li><a href="#services">שירותים</a></li>
+        <li><a href="#process">איך זה עובד</a></li>
+        <li><a href="#pricing">חבילות</a></li>
+        <li class="nav-cta-li"><a href="#quote" class="nav-cta">קבל הצעת מחיר</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main id="main" tabindex="-1">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <span class="hero-eyebrow"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg> התקנה מקצועית + הגדרת Tuya</span>
+      <h1 id="hero-title">הבית שלך,<br><span class="highlight">חכם ומחובר</span></h1>
+      <p class="hero-sub">
+        מנורות חכמות, מצלמות אבטחה, שקעים מבוקרים ודוד שמתחמם רק כשצריך.
+        אנחנו מתקינים הכל ומתאימים את הפתרון לגודל הבית ולתקציב שלך.
+      </p>
+      <div class="hero-btns">
+        <a href="#quote" class="btn-primary"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg> קבל הצעת מחיר</a>
+        <a href="#services" class="btn-secondary">גלה עוד <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="hero-trust">
+        <div><b><span class="count" data-count="24">24</span> שעות</b><span>זמן חזרה עם הצעה</span></div>
+        <div><b>שנתיים</b><span>אחריות על העבודה</span></div>
+        <div><b>ייעוץ חינם</b><span>ללא התחייבות</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual has-scene">
+      <svg class="hero-scene" viewBox="0 0 400 500" role="img"
+           aria-label="איור מונפש: מצלמת אבטחה חכמה סורקת ושלוש נורות חכמות שנדלקות, מחוברות לאפליקציה בטלפון"
+           preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="hsGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#22d3ee"/>
+            <stop offset="0.5" stop-color="#7dd3fc"/>
+            <stop offset="1" stop-color="#a78bfa"/>
+          </linearGradient>
+          <radialGradient id="hsGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#9fecff" stop-opacity="0.95"/>
+            <stop offset="55%" stop-color="#22d3ee" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="hsBeam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7dd3fc" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="#7dd3fc" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- ceiling rail -->
+        <line x1="30" y1="52" x2="370" y2="52" stroke="url(#hsGrad)" stroke-width="2" opacity="0.35"/>
+
+        <!-- data links: phone -> devices -->
+        <g class="hs-links" stroke="url(#hsGrad)" stroke-width="1.5" fill="none" opacity="0.55" stroke-dasharray="3 7" stroke-linecap="round">
+          <path d="M200 356 C 168 300 138 232 118 176"/>
+          <path d="M200 356 C 190 300 184 210 182 156"/>
+          <path d="M200 356 C 222 300 242 236 246 196"/>
+          <path d="M200 356 C 250 296 300 190 306 122"/>
+        </g>
+
+        <!-- pendant smart bulbs -->
+        <g class="hs-bulbs">
+          <g class="hs-bulb b1">
+            <line x1="118" y1="52" x2="118" y2="150" stroke="#33435c" stroke-width="2" stroke-linecap="round"/>
+            <circle class="hs-halo" cx="118" cy="168" r="36" fill="url(#hsGlow)"/>
+            <circle class="hs-core" cx="118" cy="168" r="13" fill="url(#hsGrad)"/>
+            <circle cx="118" cy="168" r="13" fill="none" stroke="#cffcff" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g class="hs-bulb b2">
+            <line x1="182" y1="52" x2="182" y2="130" stroke="#33435c" stroke-width="2" stroke-linecap="round"/>
+            <circle class="hs-halo" cx="182" cy="148" r="36" fill="url(#hsGlow)"/>
+            <circle class="hs-core" cx="182" cy="148" r="13" fill="url(#hsGrad)"/>
+            <circle cx="182" cy="148" r="13" fill="none" stroke="#cffcff" stroke-width="1" opacity="0.5"/>
+          </g>
+          <g class="hs-bulb b3">
+            <line x1="246" y1="52" x2="246" y2="172" stroke="#33435c" stroke-width="2" stroke-linecap="round"/>
+            <circle class="hs-halo" cx="246" cy="190" r="36" fill="url(#hsGlow)"/>
+            <circle class="hs-core" cx="246" cy="190" r="13" fill="url(#hsGrad)"/>
+            <circle cx="246" cy="190" r="13" fill="none" stroke="#cffcff" stroke-width="1" opacity="0.5"/>
+          </g>
+        </g>
+
+        <!-- security camera (static mount + panning head) -->
+        <rect x="330" y="70" width="10" height="28" rx="3" fill="#2b3a52"/>
+        <g class="hs-cam">
+          <path class="hs-beam" d="M300 128 L244 256 L356 256 Z" fill="url(#hsBeam)"/>
+          <rect x="286" y="96" width="60" height="34" rx="10" fill="#1b2740" stroke="url(#hsGrad)" stroke-width="1.5"/>
+          <circle cx="304" cy="113" r="11" fill="#0a0e17" stroke="url(#hsGrad)" stroke-width="2"/>
+          <circle cx="304" cy="113" r="4.5" fill="#7dd3fc"/>
+          <circle class="hs-rec" cx="334" cy="104" r="3" fill="#ff5c5c"/>
+        </g>
+
+        <!-- phone / app hub -->
+        <g class="hs-phone">
+          <rect x="168" y="356" width="64" height="120" rx="13" fill="#111826" stroke="#2b3a52" stroke-width="1.5"/>
+          <rect x="176" y="368" width="48" height="84" rx="7" fill="#0a0e17"/>
+          <circle cx="200" cy="392" r="10" fill="url(#hsGrad)"/>
+          <rect x="185" y="411" width="30" height="5" rx="2.5" fill="#2b3a52"/>
+          <rect x="188" y="421" width="24" height="5" rx="2.5" fill="#2b3a52"/>
+          <circle cx="200" cy="464" r="4" fill="none" stroke="#2b3a52" stroke-width="1.5"/>
+        </g>
+      </svg>
+      <div class="hero-chip c1">
+        <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-bulb"/></svg>
+        <div><b>תאורה</b><small>סלון · 40%</small></div>
+      </div>
+      <div class="hero-chip c2">
+        <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>
+        <div><b>אבטחה פעילה</b><small>3 מצלמות מחוברות</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST & AUTHORITY -->
+  <section class="trust" id="trust" aria-labelledby="trust-title">
+    <div class="trust-inner">
+      <div class="section-header center reveal">
+        <span class="section-tag">למה אנחנו</span>
+        <h2 class="section-title" id="trust-title">שקט נפשי, מהתקנה ועד תמיכה</h2>
+        <p class="section-sub">עבודה מקצועית, חלקים מקוריים וליווי אישי, כדי שהבית החכם פשוט יעבוד.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-badge reveal" style="--i:0">
+          <div class="trust-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-badge"/></svg></div>
+          <h3>טכנאי מוסמך</h3>
+          <p>התקנה מקצועית בידי טכנאי מנוסה, נקייה ומסודרת.</p>
+        </div>
+        <div class="trust-badge reveal" style="--i:1">
+          <div class="trust-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></div>
+          <h3>אחריות מלאה</h3>
+          <p>שנתיים אחריות על העבודה ותמיכה טכנית שוטפת.</p>
+        </div>
+        <div class="trust-badge reveal" style="--i:2">
+          <div class="trust-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-app"/></svg></div>
+          <h3>הגדרת Tuya</h3>
+          <p>מחברים הכל לאפליקציה אחת ומדריכים אותך אישית.</p>
+        </div>
+        <div class="trust-badge reveal" style="--i:3">
+          <div class="trust-ic"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-home"/></svg></div>
+          <h3>שירות אישי</h3>
+          <p>מגיעים אליך, מתאימים פתרון לבית ולתקציב, ונשארים בקשר.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="section-header center reveal">
+        <span class="section-tag">מה אנחנו מתקינים</span>
+        <h2 class="section-title">שירותי הבית החכם שלנו</h2>
+        <p class="section-sub">כל בית לגופו. צרו קשר ונתאים הצעה אישית בדיוק לצרכים שלכם.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal" style="--i:0">
+          <div class="service-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-bulb"/></svg></div>
+          <h3>מנורות חכמות</h3>
+          <p>נורות LED עם שליטה על בהירות, טמפרטורת צבע ותזמון. שליטה מהאפליקציה או בקול.</p>
+        </div>
+        <div class="service-card reveal" style="--i:1">
+          <div class="service-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cam"/></svg></div>
+          <h3>מצלמות אבטחה</h3>
+          <p>מצלמות IP עם ראיית לילה, זיהוי תנועה ושידור חי לסמארטפון 24/7. בסיסי, HD ו-4K.</p>
+        </div>
+        <div class="service-card reveal" style="--i:2">
+          <div class="service-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg></div>
+          <h3>שקעים חכמים</h3>
+          <p>שקעים עם מד צריכת חשמל, תזמון אוטומטי וניתוק מרחוק. חוסך חשמל ומונע סכנות.</p>
+        </div>
+        <div class="service-card reveal" style="--i:3">
+          <div class="service-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-water"/></svg></div>
+          <h3>דוד חם חכם</h3>
+          <p>הסב את הדוד לחכם: תזמון לפי שגרה יומית, שליטה מרחוק וחיסכון של עד 40% בחשמל.</p>
+        </div>
+        <div class="service-card reveal" style="--i:4">
+          <div class="service-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg></div>
+          <h3>מנעולים חכמים</h3>
+          <p>כניסה בטוחה עם קוד, כרטיס, טביעת אצבע או אפליקציה. יומן כניסות ויציאות מלא.</p>
+        </div>
+        <div class="service-card reveal" style="--i:5">
+          <div class="service-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-temp"/></svg></div>
+          <h3>חיישני טמפרטורה ולחות</h3>
+          <p>ניטור בזמן אמת של תנאי האוויר בבית, עם התראות ואוטומציות חכמות.</p>
+        </div>
+      </div>
+
+      <!-- SINGLE PRODUCT CALLOUT -->
+      <div class="callout reveal">
+        <div class="callout-icon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cart"/></svg></div>
+        <div class="callout-text">
+          <b>רוצה להוסיף מוצר בודד לבית?</b>
+          <p>אנחנו מגיעים אליך, מתקינים, מסבירים ומעניקים אחריות. בין אם מדובר בנורה אחת או במצלמה. <em>פנו אלינו ונתאים מחיר.</em></p>
+        </div>
+        <a href="#quote" class="btn-primary" style="white-space:nowrap">הזמן ביקור <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="process-inner">
+      <div class="section-header reveal">
+        <span class="section-tag">איך זה עובד</span>
+        <h2 class="section-title">4 צעדים לבית חכם</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal" style="--i:0">
+          <div class="step-num">01</div>
+          <h3>ייעוץ חינם</h3>
+          <p>נבין את הצרכים שלך ונמליץ על הפתרון הנכון לבית.</p>
+        </div>
+        <div class="step reveal" style="--i:1">
+          <div class="step-num">02</div>
+          <h3>הצעת מחיר שקופה</h3>
+          <p>פירוט מלא של חלקים ושעות עבודה, ללא הפתעות.</p>
+        </div>
+        <div class="step reveal" style="--i:2">
+          <div class="step-num">03</div>
+          <h3>התקנה מקצועית</h3>
+          <p>טכנאי מוסמך מגיע אליך ומתקין הכל, כולל הגדרת האפליקציה.</p>
+        </div>
+        <div class="step reveal" style="--i:3">
+          <div class="step-num">04</div>
+          <h3>תמיכה ואחריות</h3>
+          <p>אחריות שנתיים על העבודה, ותמיכה טכנית שוטפת.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-inner">
+      <div class="section-header center reveal">
+        <span class="section-tag">חבילות מוכנות</span>
+        <h2 class="section-title">חבילה לכל סוג בית</h2>
+        <p class="section-sub">כל החבילות כוללות התקנה מקצועית, הגדרת Tuya והדרכה אישית. המחיר נקבע לפי הבית שלך.</p>
+      </div>
+
+      <!-- CAMERA TIER LEGEND -->
+      <div class="tier-legend reveal">
+        <span class="lg"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cam"/></svg> מצלמה בסיסית</span>
+        <span class="lg"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cam"/></svg> מצלמה בינונית HD</span>
+        <span class="lg"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cam"/></svg> מצלמה פרימיום 4K</span>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="price-card reveal" style="--i:0">
+          <div class="price-name"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-package"/></svg> חיסכון</div>
+          <div class="price-note">מושלם לדירת סטודיו או חדר אחד</div>
+          <ul class="price-features">
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 2 מנורות חכמות</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 1 שקע חכם</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מצלמה בסיסית × 1</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> התקנה והגדרת Tuya</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> אחריות שנה</li>
+          </ul>
+          <a href="#quote" class="btn-outline">קבל הצעת מחיר</a>
+        </div>
+
+        <div class="price-card reveal" style="--i:1">
+          <div class="price-name"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-rocket"/></svg> סטארטר</div>
+          <div class="price-note">התחלה חכמה לדירה קטנה</div>
+          <ul class="price-features">
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 3 מנורות חכמות</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 2 שקעים חכמים</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> ללא מצלמות</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> התקנה והגדרת Tuya</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> אחריות שנה</li>
+          </ul>
+          <a href="#quote" class="btn-outline">קבל הצעת מחיר</a>
+        </div>
+
+        <div class="price-card reveal" style="--i:2">
+          <div class="price-name"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg> אבטחה בסיסית</div>
+          <div class="price-note">מצלמות בסיסיות לפתחים</div>
+          <ul class="price-features">
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 4 מנורות חכמות</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 2 שקעים חכמים</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מצלמה בסיסית × 2</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> התקנה והגדרת Tuya</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> אחריות שנה</li>
+          </ul>
+          <a href="#quote" class="btn-outline">קבל הצעת מחיר</a>
+        </div>
+
+        <div class="price-card featured reveal" style="--i:3">
+          <div class="featured-badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg> הפופולרי</div>
+          <div class="price-name"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-home"/></svg> בית חכם</div>
+          <div class="price-note">הפתרון המלא לדירה ממוצעת</div>
+          <ul class="price-features">
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 8 מנורות חכמות</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 4 שקעים חכמים</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מצלמה בינונית HD × 2</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> דוד חם חכם</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> התקנה והגדרת Tuya</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> אחריות שנתיים</li>
+          </ul>
+          <a href="#quote" class="btn-solid">קבל הצעת מחיר</a>
+        </div>
+
+        <div class="price-card reveal" style="--i:4">
+          <div class="price-name"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cam"/></svg> אבטחה מתקדמת</div>
+          <div class="price-note">4 מצלמות HD לבית פרטי</div>
+          <ul class="price-features">
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 6 מנורות חכמות</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 4 שקעים חכמים</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מצלמה בינונית HD × 4</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> דוד חם חכם</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> התקנה והגדרת Tuya</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> אחריות שנתיים</li>
+          </ul>
+          <a href="#quote" class="btn-outline">קבל הצעת מחיר</a>
+        </div>
+
+        <div class="price-card reveal" style="--i:5">
+          <div class="featured-badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-crown"/></svg> פרימיום</div>
+          <div class="price-name"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-crown"/></svg> פרימיום 4K</div>
+          <div class="price-note">4 מצלמות 4K לווילה או עסק</div>
+          <ul class="price-features">
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 10 מנורות חכמות</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> 6 שקעים חכמים</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מצלמה פרימיום 4K × 4</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> דוד חם חכם</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> התקנה והגדרת Tuya</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> אחריות שנתיים ועדיפות</li>
+          </ul>
+          <a href="#quote" class="btn-outline">קבל הצעת מחיר</a>
+        </div>
+
+        <div class="price-card custom reveal">
+          <div class="price-name"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-tools"/></svg> מותאמת אישית</div>
+          <div class="price-note">בונים יחד בדיוק מה שצריך</div>
+          <ul class="price-features">
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מנורות חכמות</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> שקעים חכמים</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מצלמה בסיסית</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מצלמה HD</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> מצלמה 4K</li>
+            <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> דוד חכם</li>
+          </ul>
+          <a href="#quote" class="btn-outline">שלח פרטים וקבל הצעה</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section class="quote-section" id="quote">
+    <div class="quote-wrap">
+      <aside class="quote-aside reveal">
+        <span class="section-tag">הצעת מחיר</span>
+        <h2 class="section-title">שלח פרטים ונחזור אליך תוך 24 שעות</h2>
+        <ul class="quote-points">
+          <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg><span><b>מענה מהיר</b>חוזרים אליך עם הצעה מפורטת ביום העסקים הקרוב.</span></li>
+          <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-badge"/></svg><span><b>עבודה באחריות</b>טכנאי מוסמך, חלקים מקוריים ואחריות מלאה.</span></li>
+          <li><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-app"/></svg><span><b>הכל באפליקציה אחת</b>אנחנו מגדירים את Tuya ומדריכים אותך אישית.</span></li>
+        </ul>
+      </aside>
+
+      <form id="quote-form" class="form-card reveal" aria-label="טופס בקשת הצעת מחיר" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="q-name">שם מלא <span class="req" aria-hidden="true">*</span></label>
+            <input id="q-name" name="name" type="text" placeholder="ישראל ישראלי" autocomplete="name"
+                   required aria-required="true" aria-invalid="false" aria-describedby="q-name-error">
+            <span id="q-name-error" class="field-error" role="alert" hidden>נא למלא שם מלא</span>
+          </div>
+          <div class="field">
+            <label for="q-phone">טלפון <span class="req" aria-hidden="true">*</span></label>
+            <input id="q-phone" name="phone" type="tel" dir="ltr" inputmode="tel" placeholder="05X-XXXXXXX"
+                   autocomplete="tel" required aria-required="true" aria-invalid="false"
+                   aria-describedby="q-phone-error">
+            <span id="q-phone-error" class="field-error" role="alert" hidden>נא למלא מספר טלפון תקין (לפחות 9 ספרות)</span>
+          </div>
+          <div class="field">
+            <label for="q-city">עיר / אזור</label>
+            <input id="q-city" name="city" type="text" placeholder="תל אביב, באר שבע..." autocomplete="address-level2">
+          </div>
+          <div class="field">
+            <label for="q-type">סוג נכס</label>
+            <select id="q-type" name="propertyType">
+              <option>דירה</option>
+              <option>בית פרטי</option>
+              <option>וילה</option>
+              <option>משרד / עסק</option>
+            </select>
+          </div>
+          <fieldset class="field form-full chips-field">
+            <legend>מה מעניין אותך? (אפשר לסמן כמה)</legend>
+            <div class="chips">
+              <label class="chip-check"><input type="checkbox" name="interest" value="מנורות"> מנורות חכמות</label>
+              <label class="chip-check"><input type="checkbox" name="interest" value="מצלמות"> מצלמות אבטחה</label>
+              <label class="chip-check"><input type="checkbox" name="interest" value="שקעים"> שקעים חכמים</label>
+              <label class="chip-check"><input type="checkbox" name="interest" value="דוד"> דוד חם חכם</label>
+              <label class="chip-check"><input type="checkbox" name="interest" value="מנעול"> מנעול חכם</label>
+              <label class="chip-check"><input type="checkbox" name="interest" value="הכל"> הכל</label>
+            </div>
+          </fieldset>
+          <div class="field form-full">
+            <label for="q-notes">הערות נוספות</label>
+            <textarea id="q-notes" name="notes" placeholder="גודל הדירה, מספר חדרים, שאלות..."></textarea>
+          </div>
+          <div class="form-full">
+            <button type="submit" class="submit-btn"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg> שלח ואקבל הצעת מחיר חינם</button>
+          </div>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-contact">
+      <a href="tel:0528985233"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg> 052-898-5233</a>
+      <a href="mailto:yakirdray1@gmail.com"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg> yakirdray1@gmail.com</a>
+      <a href="accessibility.html"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-badge"/></svg> הצהרת נגישות</a>
+    </div>
+    <span>© 2026 DrayConnect. כל הזכויות שמורות.</span>
+    <span class="foot-brand">DrayConnect</span>
+  </footer>
+
+  <script>
+    // Nav solidify on scroll (rAF-throttled; passive listener)
+    (function () {
+      var nav = document.getElementById('nav');
+      var ticking = false;
+      function update() { nav.classList.toggle('scrolled', window.scrollY > 12); ticking = false; }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    })();
+
+    // Scroll reveal. Content is only hidden once we know JS runs (html.js),
+    // and a probe reveals everything if IntersectionObserver never fires.
+    (function () {
+      var docEl = document.documentElement;
+      docEl.classList.add('js');
+      var items = [].slice.call(document.querySelectorAll('.reveal'));
+      function revealAll() { items.forEach(function (el) { el.classList.add('in'); }); }
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !('IntersectionObserver' in window)) { revealAll(); return; }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      items.forEach(function (el) { io.observe(el); });
+
+      // Health probe: if IO doesn't fire for an on-screen sentinel, reveal all.
+      var probe = document.createElement('div');
+      probe.style.cssText = 'position:fixed;top:0;left:0;width:2px;height:2px;pointer-events:none;opacity:0';
+      document.body.appendChild(probe);
+      var ok = false;
+      var probeIO = new IntersectionObserver(function () {
+        ok = true; probeIO.disconnect(); probe.remove();
+      });
+      probeIO.observe(probe);
+      window.setTimeout(function () {
+        if (!ok) { io.disconnect(); probeIO.disconnect(); if (probe.parentNode) probe.remove(); revealAll(); }
+      }, 600);
+    })();
+
+    // Accessible form validation (Hebrew errors, role=alert, aria-invalid)
+    (function () {
+      var form = document.getElementById('quote-form');
+      if (!form) return;
+      var status = document.getElementById('form-status');
+
+      function setError(input, on) {
+        var err = document.getElementById(input.id + '-error');
+        input.setAttribute('aria-invalid', on ? 'true' : 'false');
+        if (err) err.hidden = !on;
+      }
+      function validPhone(v) { return (v.replace(/\D/g, '').length >= 9); }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('q-name');
+        var phone = document.getElementById('q-phone');
+        var firstBad = null;
+        var nameBad = !name.value.trim();
+        var phoneBad = !validPhone(phone.value);
+        setError(name, nameBad);
+        setError(phone, phoneBad);
+        if (nameBad) firstBad = name;
+        else if (phoneBad) firstBad = phone;
+
+        if (firstBad) {
+          status.textContent = 'לא ניתן לשלוח: יש שדות חובה שחסרים או שגויים.';
+          firstBad.focus();
+          return;
+        }
+        status.textContent = 'תודה! הפרטים נקלטו. נחזור אליך תוך 24 שעות.';
+        form.reset();
+      });
+
+      // Clear a field's error as the user corrects it
+      ['q-name', 'q-phone'].forEach(function (id) {
+        var el = document.getElementById(id);
+        el.addEventListener('input', function () {
+          if (el.getAttribute('aria-invalid') === 'true') {
+            var okNow = id === 'q-phone' ? validPhone(el.value) : !!el.value.trim();
+            if (okNow) setError(el, false);
+          }
+        });
+      });
+    })();
+
+    // Count-up on stat numbers when they scroll into view (reduced-motion aware)
+    (function () {
+      var els = [].slice.call(document.querySelectorAll('.count[data-count]'));
+      if (!els.length) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function run(el) {
+        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        if (reduce) { el.textContent = target; return; }
+        var dur = 1100, start = null;
+        function step(t) {
+          if (start === null) start = t;
+          var p = Math.min((t - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+          el.textContent = Math.round(target * eased);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      if (reduce || !('IntersectionObserver' in window)) { els.forEach(run); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.6 });
+      els.forEach(function (el) { io.observe(el); });
+      // If IO never fires, the element keeps its HTML value (the final number) — no broken state.
+    })();
+  </script>
+
+  <!-- Accessibility preferences widget (IS 5568 / Regulation 35) -->
+  <script src="a11y.js" defer></script>
+</body>
+</html>
