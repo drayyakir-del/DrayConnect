@@ -1098,3 +1098,45 @@ html.a11y-contrast-mono #a11y-panel { filter: grayscale(0); }
   html[class*="a11y-lines-"] li { line-height: normal !important; }
   #a11y-trigger, #a11y-panel, .skip-link { display: none !important; }
 }
+
+/* ── Floating WhatsApp CTA ──────────────────────────────
+   Sits at bottom inline-start (visual RIGHT in this RTL page);
+   #a11y-trigger owns bottom inline-end, so the two never collide. */
+.wa-fab {
+  position: fixed;
+  bottom: 20px;
+  inset-inline-start: 20px;
+  z-index: 190;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px 13px 17px;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  background: linear-gradient(135deg, #25d366 0%, #1dbd5a 100%);
+  color: #04120a;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  text-decoration: none;
+  box-shadow: 0 14px 34px -12px rgba(37, 211, 102, 0.55), var(--shadow-sm);
+  transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out);
+}
+.wa-fab svg { width: 24px; height: 24px; fill: currentColor; flex: none; }
+.wa-fab:hover { transform: translateY(-2px); box-shadow: 0 20px 44px -12px rgba(37, 211, 102, 0.65); }
+.wa-fab:active { transform: scale(0.97); }
+.wa-fab:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Collapse to a circle on phones so it never covers the content */
+@media (max-width: 560px) {
+  .wa-fab { padding: 0; width: 52px; height: 52px; justify-content: center; gap: 0; }
+  .wa-fab-label { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-fab { transition: none; }
+  .wa-fab:hover, .wa-fab:active { transform: none; }
+}
+
+/* High-contrast a11y modes must not wash the button out */
+.a11y-contrast-high .wa-fab { border-color: #000; color: #000; }
