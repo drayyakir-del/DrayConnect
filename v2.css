@@ -1,0 +1,532 @@
+/* ═══════════════════════════════════════════════════════════════
+   DrayConnect — Constellation
+   Base system: "Dala" — pure black void, weightless oversized type,
+   one saturated violet reserved for action, amber for labels,
+   procedural particle field as the only hero imagery.
+   Discipline borrowed from the "Ferrari" reference: strict
+   single-signal-color rule, full-bleed vertical rhythm, restraint.
+
+   Deliberate deviations (Hebrew + accessibility), see build notes:
+   - Body weight 300, not 200. Hebrew strokes at 200 on black are
+     too thin to read, and this site carries an IS-5568 statement.
+   - Display tracking -0.03em, not -0.04em. Hebrew letterforms
+     collide sooner than Latin.
+   - Form fields keep a hairline underline. "No borders anywhere"
+     leaves an input with no affordance at all.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Surfaces — the void is the design; no panels, no cards */
+  --void:    #000000;
+
+  /* Ink */
+  --white:   #ffffff;
+  --ash:     #9a9a9a;   /* 6.9:1 on void */
+  --silver:  #bdbdbd;   /* 10:1 on void */
+
+  /* Signal colors */
+  --iris:    #8052ff;   /* filled action ONLY — never a surface */
+  --iris-lo: #6b3ee0;
+  --saffron: #ffb829;   /* emphasis labels, accent links */
+  --verdant: #15846e;   /* particle palette depth only */
+
+  --f:    'Inter', system-ui, sans-serif;
+  --f-he: 'Heebo', 'Inter', system-ui, sans-serif;
+
+  --t-cap:   0.8125rem;  /* 13px */
+  --t-label: 0.875rem;   /* 14px — Latin uppercase labels */
+  --t-body:  1.125rem;   /* 18px */
+
+  --maxw: 1280px;
+  --gut: clamp(20px, 5vw, 60px);
+  --gap-sec: clamp(72px, 13vh, 120px);
+  --r: 24px;
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background: var(--void);
+  color: var(--white);
+  font-family: var(--f-he);
+  font-size: var(--t-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+:focus-visible { outline: 2px solid var(--saffron); outline-offset: 4px; }
+
+.skip-link {
+  position: absolute; inset-inline-start: -9999px; top: 0;
+  background: var(--white); color: var(--void);
+  padding: 12px 22px; z-index: 999; font-size: var(--t-label);
+  border-radius: 0 0 var(--r) var(--r);
+}
+.skip-link:focus { inset-inline-start: 0; }
+
+.wrap { max-width: var(--maxw); margin-inline: auto; width: 100%; }
+
+/* Latin uppercase label — the system's small-type voice */
+.label {
+  font-family: var(--f);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  display: inline-block;
+}
+.label.dim { color: var(--ash); }
+
+h1, h2, h3 { font-weight: 400; line-height: 1.08; letter-spacing: -0.03em; }
+
+/* ── NAV — transparent, no border ────────────────────────────── */
+.nav {
+  position: fixed; inset-inline: 0; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+  padding: 22px var(--gut);
+  transition: background .45s var(--ease), padding .45s var(--ease);
+}
+.nav.solid { background: rgba(0, 0, 0, 0.9); padding-block: 14px; }
+
+.logo { display: inline-flex; align-items: center; gap: 11px; }
+.logo svg { width: 22px; height: 22px; flex: none; }
+.logo b {
+  font-family: var(--f);
+  font-size: 1rem; font-weight: 600; letter-spacing: -0.01em;
+}
+.nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
+.nav-links a {
+  font-family: var(--f);
+  font-size: var(--t-label); font-weight: 600;
+  letter-spacing: 0.025em; text-transform: uppercase;
+  color: var(--ash);
+  transition: color .25s var(--ease);
+}
+.nav-links a:hover { color: var(--white); }
+
+/* The single filled pill — one per view, never duplicated nearby */
+.pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--iris);
+  color: var(--white);
+  font-family: var(--f);
+  font-size: var(--t-label); font-weight: 600;
+  letter-spacing: 0.025em; text-transform: uppercase;
+  padding: 14px 22px;
+  border: 0; border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;   /* never let the pill break into a blob */
+  transition: background .28s var(--ease), transform .28s var(--ease);
+}
+.pill:hover { background: var(--iris-lo); }
+.pill:active { transform: scale(0.975); }
+.pill:disabled { background: #2b2540; color: var(--ash); cursor: wait; }
+
+/* Ghost link — secondary action, no container */
+.ghost {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--f);
+  font-size: var(--t-label); font-weight: 600;
+  letter-spacing: 0.025em; text-transform: uppercase;
+  color: var(--ash);
+  transition: color .25s var(--ease);
+}
+.ghost .ar { transition: transform .3s var(--ease); }
+.ghost:hover { color: var(--white); }
+.ghost:hover .ar { transform: translateX(-5px); }   /* RTL: forward = left */
+
+/* ── HERO ────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: grid; align-items: center;
+  padding: 132px var(--gut) 70px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 70px);
+}
+.hero h1 {
+  font-size: clamp(3rem, 8.6vw, 7rem);
+  margin-block: 22px 26px;
+}
+.hero h1 i { font-style: normal; color: var(--ash); }
+.hero-sub {
+  color: var(--silver);
+  max-width: 44ch;
+  margin-bottom: 40px;
+}
+.hero-actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+
+.hero-facts { display: flex; flex-wrap: wrap; gap: 14px 46px; margin-top: 58px; }
+.hero-facts div { display: grid; gap: 2px; }
+.hero-facts b {
+  font-family: var(--f);
+  font-size: 1.5rem; font-weight: 400; letter-spacing: -0.02em;
+}
+.hero-facts span { font-size: var(--t-cap); color: var(--ash); }
+
+/* Constellation canvas */
+.art { position: relative; aspect-ratio: 1 / 1; width: 100%; }
+.art canvas { width: 100%; height: 100%; }
+
+/* ── SECTION ─────────────────────────────────────────────────── */
+.sec { padding: var(--gap-sec) var(--gut); }
+.sec-head { max-width: 640px; margin-bottom: clamp(44px, 7vh, 76px); }
+.sec-head h2 { font-size: clamp(2.1rem, 5.2vw, 4rem); margin-block: 16px 18px; }
+.sec-head p { color: var(--silver); }
+
+/* Zigzag: text + visual, alternating — no cards, no borders */
+.zig {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 80px);
+  padding-block: clamp(40px, 7vh, 72px);
+}
+.zig:nth-of-type(even) .zig-art { order: -1; }
+.zig h3 { font-size: clamp(1.6rem, 3.4vw, 2.6rem); margin-block: 14px 14px; }
+.zig p { color: var(--silver); max-width: 42ch; }
+.zig-art { display: grid; place-items: center; }
+.zig-art svg { width: min(100%, 330px); height: auto; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.tag {
+  font-family: var(--f);
+  font-size: var(--t-cap); font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ash);
+  padding: 7px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+/* ── STEPS — spacious, no containers ─────────────────────────── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: clamp(32px, 5vw, 56px);
+}
+.step-n {
+  font-family: var(--f);
+  font-size: 2.6rem; font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--iris);
+}
+.step h3 { font-size: 1.35rem; margin-block: 12px 8px; }
+.step p { font-size: 1rem; color: var(--ash); }
+
+/* ── PLANS — typographic blocks, not cards ───────────────────── */
+.plans { display: grid; gap: clamp(34px, 5vh, 54px); }
+.plan {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) auto;
+  align-items: start;
+  gap: clamp(18px, 4vw, 52px);
+  padding-block: clamp(26px, 4vh, 38px);
+}
+.plan-name { display: grid; gap: 7px; }
+.plan-name h3 { font-size: 1.7rem; }
+.plan-name span { font-size: var(--t-cap); color: var(--ash); }
+.plan-items { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.plan-items li { font-size: 0.95rem; color: var(--silver); }
+.plan-items li::after { content: "·"; color: var(--ash); margin-inline-start: 10px; }
+.plan-items li:last-child::after { content: ""; }
+.plan .ghost { white-space: nowrap; }
+.plan.mark .plan-name h3 { color: var(--saffron); }
+
+/* ── FORM — floating fields, hairline affordance only ────────── */
+.quote {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(38px, 6vw, 92px);
+  align-items: start;
+}
+.quote-list { list-style: none; display: grid; gap: 24px; margin-top: 34px; }
+.quote-list b { display: block; font-weight: 400; font-size: 1.15rem; margin-bottom: 5px; }
+.quote-list span { font-size: 0.95rem; color: var(--ash); }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 26px; }
+.f-full { grid-column: 1 / -1; }
+
+.field > label, .chips-set > legend {
+  display: block;
+  font-family: var(--f);
+  font-size: var(--t-cap); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 9px;
+}
+.field input, .field select, .field textarea {
+  width: 100%;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--f-he);
+  font-size: 1.05rem; font-weight: 300;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0;
+  padding: 11px 0;
+  transition: border-color .3s var(--ease);
+}
+.field select { cursor: pointer; }
+.field select option { background: #0b0b0b; color: var(--white); }
+.field textarea { resize: vertical; min-height: 88px; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-bottom-color: var(--iris);
+}
+.field input::placeholder, .field textarea::placeholder { color: #4d4d4d; }
+.field [aria-invalid="true"] { border-bottom-color: #ff6b5a; }
+.err { display: block; font-size: var(--t-cap); color: #ff8d7f; margin-top: 8px; }
+
+.chips-set { border: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 9px; }
+.chip {
+  display: inline-flex; align-items: center;
+  padding: 10px 17px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem; color: var(--silver);
+  cursor: pointer;
+  transition: background .25s var(--ease), color .25s var(--ease);
+}
+.chip input { position: absolute; opacity: 0; width: 0; height: 0; }
+.chip:hover { background: rgba(255, 255, 255, 0.1); color: var(--white); }
+.chip:has(input:checked) { background: var(--iris); color: var(--white); }
+.chip:has(input:focus-visible) { outline: 2px solid var(--saffron); outline-offset: 3px; }
+
+.status { grid-column: 1 / -1; font-size: 0.95rem; color: var(--saffron); min-height: 1.5em; }
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+.foot { padding: clamp(56px, 9vh, 92px) var(--gut) 36px; }
+.foot-grid {
+  display: flex; flex-wrap: wrap; gap: 30px 58px;
+  justify-content: space-between; align-items: flex-start;
+}
+.foot-col { display: grid; gap: 11px; font-size: 0.95rem; }
+.foot-col a { color: var(--ash); transition: color .25s var(--ease); }
+.foot-col a:hover { color: var(--saffron); }
+.foot-bottom {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  justify-content: space-between;
+  margin-top: 52px;
+  font-size: var(--t-cap); color: #5c5c5c;
+}
+
+/* ── WhatsApp — pill, matching the system's only radius rule ─── */
+.wa {
+  position: fixed; bottom: 22px; inset-inline-start: 22px; z-index: 190;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 19px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--white);
+  font-size: 0.95rem;
+  transition: background .28s var(--ease);
+}
+.wa svg { width: 19px; height: 19px; fill: currentColor; flex: none; }
+.wa:hover { background: rgba(255, 255, 255, 0.14); }
+@media (max-width: 620px) {
+  .wa { padding: 0; width: 48px; height: 48px; justify-content: center; gap: 0; }
+  .wa-label { display: none; }
+}
+
+/* ── Reveal ──────────────────────────────────────────────────── */
+.rv { opacity: 0; transform: translateY(20px); }
+.rv.in { opacity: 1; transform: none; transition: opacity 1s var(--ease), transform 1s var(--ease); }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 940px) {
+  .hero-grid, .zig, .quote { grid-template-columns: 1fr; }
+  .zig:nth-of-type(even) .zig-art { order: 0; }
+  .art { max-width: 460px; margin-inline: auto; }
+  .plan { grid-template-columns: 1fr; gap: 16px; }
+  .nav-links .hide-sm { display: none; }
+}
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero-facts { gap: 14px 30px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1; transform: none; transition: none; }
+  .ghost:hover .ar { transform: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCESSIBILITY LAYER (IS 5568 / Regulation 35)
+   a11y.js toggles these classes on <html>; this is what makes the
+   widget's buttons actually do something. Ported from style.css
+   and re-tuned for this palette — without it the widget renders
+   but every control is a no-op.
+   ═══════════════════════════════════════════════════════════════ */
+
+.a11y-sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+html.a11y-links a { text-decoration: underline !important; text-underline-offset: 3px; }
+
+html.a11y-contrast-high {
+  --ash: #dcdcdc;
+  --silver: #f0f0f0;
+}
+html.a11y-contrast-high .field input,
+html.a11y-contrast-high .field select,
+html.a11y-contrast-high .field textarea { border-bottom-color: var(--white); }
+html.a11y-contrast-high .tag,
+html.a11y-contrast-high .chip { background: #2a2a2a; color: #fff; }
+
+html.a11y-contrast-invert { filter: invert(1) hue-rotate(180deg); }
+html.a11y-contrast-invert canvas { filter: invert(1) hue-rotate(180deg); }
+
+html.a11y-contrast-mono { filter: grayscale(1); }
+
+html.a11y-text-115 { font-size: 115%; }
+html.a11y-text-130 { font-size: 130%; }
+html.a11y-text-150 { font-size: 150%; }
+
+html.a11y-lines-16 body,
+html.a11y-lines-16 p,
+html.a11y-lines-16 li { line-height: 1.6 !important; }
+html.a11y-lines-20 body,
+html.a11y-lines-20 p,
+html.a11y-lines-20 li { line-height: 2 !important; }
+
+html.a11y-readable-font,
+html.a11y-readable-font body,
+html.a11y-readable-font h1,
+html.a11y-readable-font h2,
+html.a11y-readable-font h3,
+html.a11y-readable-font button,
+html.a11y-readable-font input,
+html.a11y-readable-font textarea {
+  font-family: Arial, "Segoe UI", Tahoma, sans-serif !important;
+}
+
+html.a11y-highlight-headings h1,
+html.a11y-highlight-headings h2,
+html.a11y-highlight-headings h3 {
+  outline: 2px dashed var(--saffron);
+  outline-offset: 4px;
+}
+
+html.a11y-cursor-black, html.a11y-cursor-black * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="28" viewBox="0 0 20 28"><path d="M2 2l14 12-6 1 4 8-3 1-4-8-5 4z" fill="black" stroke="white" stroke-width="1.2"/></svg>') 2 2, auto;
+}
+html.a11y-cursor-large, html.a11y-cursor-large * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="56" viewBox="0 0 20 28"><path d="M2 2l14 12-6 1 4 8-3 1-4-8-5 4z" fill="black" stroke="white" stroke-width="1.2"/></svg>') 4 4, auto;
+}
+
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+html.a11y-reduce-motion .rv { opacity: 1 !important; transform: none !important; }
+
+/* ── Widget chrome ───────────────────────────────────────────── */
+#a11y-trigger {
+  position: fixed;
+  bottom: 22px;
+  inset-inline-end: 22px;          /* RTL: visual LEFT — WhatsApp owns the right */
+  z-index: 190;
+  width: 48px; height: 48px;
+  border-radius: 9999px;
+  border: 0;
+  background: var(--iris);
+  color: var(--white);
+  display: grid; place-items: center;
+  cursor: pointer;
+  transition: background .28s var(--ease), transform .28s var(--ease);
+}
+#a11y-trigger:hover { background: var(--iris-lo); }
+#a11y-trigger:active { transform: scale(0.96); }
+
+#a11y-panel {
+  position: fixed;
+  bottom: 82px;
+  inset-inline-end: 22px;
+  z-index: 191;
+  width: min(340px, calc(100vw - 44px));
+  max-height: min(76vh, 620px);
+  overflow-y: auto;
+  background: #0b0b0b;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--r);
+  padding: 20px;
+}
+.a11y-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+#a11y-title { font-size: 1.15rem; font-weight: 400; }
+#a11y-close {
+  width: 34px; height: 34px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent; color: var(--white);
+  font-size: 1.3rem; line-height: 1; cursor: pointer;
+}
+#a11y-close:hover { background: rgba(255, 255, 255, 0.08); }
+
+.a11y-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.a11y-toggle {
+  display: flex; flex-direction: column; gap: 4px;
+  align-items: flex-start; text-align: start;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--white);
+  cursor: pointer; font-family: inherit;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.a11y-toggle:hover { background: rgba(255, 255, 255, 0.09); }
+.a11y-toggle.is-active { border-color: var(--iris); background: rgba(128, 82, 255, 0.18); }
+.a11y-tg-label { font-size: 0.92rem; font-weight: 400; }
+.a11y-tg-value { font-size: 0.8rem; color: var(--ash); }
+.a11y-toggle.is-active .a11y-tg-value { color: var(--saffron); }
+
+#a11y-reset {
+  width: 100%; margin-top: 14px;
+  padding: 12px; border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent; color: var(--white);
+  cursor: pointer; font-family: inherit; font-size: 0.95rem;
+}
+#a11y-reset:hover { background: rgba(255, 255, 255, 0.08); }
+#a11y-statement-link {
+  display: block; text-align: center; margin-top: 12px;
+  color: var(--saffron); font-size: 0.9rem;
+}
+
+/* Keep the widget itself usable inside invert / grayscale modes */
+html.a11y-contrast-invert #a11y-trigger,
+html.a11y-contrast-invert #a11y-panel { filter: invert(1) hue-rotate(180deg); }
+
+@media (max-width: 420px) {
+  .a11y-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  html[class*="a11y-"] { filter: none !important; }
+  html[class*="a11y-text-"] { font-size: 100% !important; }
+  #a11y-trigger, #a11y-panel, .wa, .nav { display: none !important; }
+}

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DrayConnect | בית חכם בלחיצת כפתור</title>
+  <meta name="description" content="DrayConnect מתקינה בתים חכמים: תאורה, מצלמות אבטחה, שקעים חכמים ודוד חכם. חשמלאי מוסמך, הגדרת Tuya מלאה ואחריות. הצעת מחיר תוך 24 שעות.">
+
+  <!-- ═══ SITE CONFIG — עדכן כאן, לא בקוד ═════════════════════════
+       SITE_URL   : הדומיין הסופי. חובה לעדכן — בלעדיו תגיות השיתוף
+                    (OG) ותמונת הוואטסאפ לא יעבדו.
+       WHATSAPP   : מספר בפורמט בינלאומי, בלי + ובלי מקפים.
+       EMAIL_KEY  : Access Key מ-https://web3forms.com (חינם).
+                    כל עוד ריק — הלידים נשלחים בוואטסאפ בלבד.
+       GA_ID      : מזהה Google Analytics 4 (G-XXXXXXXXXX). ריק = כבוי.
+  ═══════════════════════════════════════════════════════════════ -->
+  <script>
+    window.DRAYCONNECT_CONFIG = {
+      SITE_URL:  'https://drayconnect.co.il',
+      WHATSAPP:  '972528985233',
+      EMAIL_KEY: '',
+      GA_ID:     ''
+    };
+  </script>
+
+  <link rel="canonical" href="https://drayconnect.co.il/">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:site_name" content="DrayConnect">
+  <meta property="og:url" content="https://drayconnect.co.il/">
+  <meta property="og:title" content="DrayConnect | בית חכם בלחיצת כפתור">
+  <meta property="og:description" content="התקנת בתים חכמים: תאורה, מצלמות אבטחה, שקעים חכמים ודוד חכם. חשמלאי מוסמך, הגדרת Tuya מלאה ואחריות.">
+  <meta property="og:image" content="https://drayconnect.co.il/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DrayConnect — בית חכם בלחיצת כפתור">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DrayConnect | בית חכם בלחיצת כפתור">
+  <meta name="twitter:description" content="התקנת בתים חכמים: תאורה, מצלמות, שקעים חכמים ודוד חכם. חשמלאי מוסמך ואחריות.">
+  <meta name="twitter:image" content="https://drayconnect.co.il/og-image.png">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="v2.css">
+
+  <!-- Accessibility prefs bootstrap: apply before first paint (no flash) -->
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem('drayconnect_a11y_v1');
+        if (!raw) return;
+        var p = JSON.parse(raw);
+        if (p.version !== 1) return;
+        var c = document.documentElement.classList;
+        c.toggle('a11y-links', !!p.links);
+        c.toggle('a11y-contrast-high', p.contrast === 'high');
+        c.toggle('a11y-contrast-invert', p.contrast === 'invert');
+        c.toggle('a11y-contrast-mono', p.contrast === 'mono');
+        c.toggle('a11y-text-115', p.textSize === 115);
+        c.toggle('a11y-text-130', p.textSize === 130);
+        c.toggle('a11y-text-150', p.textSize === 150);
+        c.toggle('a11y-lines-16', p.lineSpacing === 16);
+        c.toggle('a11y-lines-20', p.lineSpacing === 20);
+        c.toggle('a11y-readable-font', !!p.readableFont);
+        c.toggle('a11y-highlight-headings', !!p.highlightHeadings);
+        c.toggle('a11y-cursor-black', !!p.cursorBlack);
+        c.toggle('a11y-cursor-large', !!p.cursorLarge);
+        c.toggle('a11y-reduce-motion', !!p.reduceMotion);
+      } catch (e) {}
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "@id": "https://drayconnect.co.il/#business",
+    "name": "DrayConnect",
+    "description": "התקנת בתים חכמים: תאורה חכמה, מצלמות אבטחה, שקעים חכמים ודוד חכם, כולל הגדרת אפליקציית Tuya.",
+    "url": "https://drayconnect.co.il/",
+    "telephone": "+972-52-898-5233",
+    "email": "yakirdray1@gmail.com",
+    "image": "https://drayconnect.co.il/og-image.png",
+    "logo": "https://drayconnect.co.il/favicon.png",
+    "priceRange": "₪₪",
+    "currenciesAccepted": "ILS",
+    "address": { "@type": "PostalAddress", "addressCountry": "IL" },
+    "areaServed": { "@type": "Country", "name": "IL" },
+    "knowsLanguage": "he",
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "התקנת תאורה חכמה" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "התקנת מצלמות אבטחה" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "התקנת שקעים חכמים" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "התקנת דוד חכם" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "הגדרת אפליקציית Tuya" } }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics 4 — inert until GA_ID is set above -->
+  <script>
+    (function () {
+      var id = (window.DRAYCONNECT_CONFIG || {}).GA_ID;
+      if (!id) return;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+      document.head.appendChild(t);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', id);
+    })();
+  </script>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <nav class="nav" id="nav" aria-label="ניווט ראשי">
+    <a href="#" class="logo" aria-label="DrayConnect, לדף הבית">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 2 22 20H2Z" fill="#8052ff"/>
+        <path d="M12 9 17 20H7Z" fill="#000"/>
+      </svg>
+      <b>DrayConnect</b>
+    </a>
+    <ul class="nav-links">
+      <li class="hide-sm"><a href="#services">שירותים</a></li>
+      <li class="hide-sm"><a href="#process">איך זה עובד</a></li>
+      <li class="hide-sm"><a href="#pricing">חבילות</a></li>
+      <li><a href="#quote" class="pill">הצעת מחיר</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ── HERO ───────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="label">Smart Home · Tuya</span>
+          <h1>הבית שלך,<br><i>רשת של אור.</i></h1>
+          <p class="hero-sub">
+            תאורה, מצלמות, שקעים ודוד — כולם מדברים ביניהם, וכולם
+            בכף היד שלך. אנחנו מתקינים, מגדירים ומלווים.
+          </p>
+          <div class="hero-actions">
+            <a href="#quote" class="pill">קבלו הצעת מחיר</a>
+            <a href="#services" class="ghost">
+              מה מתקינים <span class="ar" aria-hidden="true">←</span>
+            </a>
+          </div>
+          <div class="hero-facts">
+            <div><b>24</b><span>שעות לחזרה עם הצעה</span></div>
+            <div><b>עד שנתיים</b><span>אחריות על העבודה</span></div>
+            <div><b>ייעוץ חינם</b><span>ללא התחייבות</span></div>
+          </div>
+        </div>
+        <div class="art">
+          <canvas id="constellation"
+                  role="img"
+                  aria-label="איור: בית הבנוי מאלפי נקודות אור זעירות, עם נקודות בהירות יותר המסמנות מכשירים חכמים"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICES ───────────────────────────────────────────── -->
+    <section class="sec" id="services">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="label">01 — שירותים</span>
+          <h2>ארבע מערכות. אפליקציה אחת.</h2>
+          <p>מתחילים ממה שהכי מפריע לך היום, ומרחיבים מתי שבא לך.</p>
+        </div>
+
+        <article class="zig rv">
+          <div>
+            <span class="label dim">Lighting</span>
+            <h3>תאורה חכמה</h3>
+            <p>
+              עמעום, גוונים, תרחישים וטיימרים. הסלון נדלק לבד בשקיעה,
+              חדר הילדים נכבה לבד בעשר.
+            </p>
+            <div class="tags">
+              <span class="tag">עמעום</span>
+              <span class="tag">תרחישים</span>
+              <span class="tag">שליטה קולית</span>
+            </div>
+          </div>
+          <div class="zig-art" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#8052ff" stroke-width="1">
+              <circle cx="100" cy="72" r="26"/>
+              <circle cx="100" cy="72" r="44" stroke="#8052ff" opacity=".35"/>
+              <circle cx="100" cy="72" r="62" stroke="#8052ff" opacity=".15"/>
+              <path d="M100 98v34M86 140h28M90 152h20" stroke="#ffb829"/>
+              <path d="M100 10v18M46 26l10 14M154 26l-10 14" stroke="#9a9a9a" opacity=".5"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="zig rv">
+          <div>
+            <span class="label dim">Security</span>
+            <h3>מצלמות אבטחה</h3>
+            <p>
+              HD או 4K, צפייה חיה מכל מקום, התראות תנועה וגיבוי ענן.
+              רואים מי בדלת גם כשאתם בחו״ל.
+            </p>
+            <div class="tags">
+              <span class="tag">צפייה חיה</span>
+              <span class="tag">התראות</span>
+              <span class="tag">ראיית לילה</span>
+            </div>
+          </div>
+          <div class="zig-art" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#8052ff" stroke-width="1">
+              <rect x="42" y="66" width="86" height="52" rx="6"/>
+              <path d="M128 78l34-14v72l-34-14z"/>
+              <circle cx="72" cy="92" r="11" stroke="#ffb829"/>
+              <path d="M40 140 26 176M130 140l14 36" stroke="#9a9a9a" opacity=".4"/>
+              <path d="M62 44a48 48 0 0 1 46 0" stroke="#15846e" opacity=".7"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="zig rv">
+          <div>
+            <span class="label dim">Power</span>
+            <h3>שקעים חכמים</h3>
+            <p>
+              כיבוי מרחוק, מדידת צריכה וזיהוי מי בדיוק אוכל לך את החשמל.
+              מזגן שנשאר דלוק? נכבה מהטלפון.
+            </p>
+            <div class="tags">
+              <span class="tag">מדידת צריכה</span>
+              <span class="tag">תזמון</span>
+              <span class="tag">כיבוי מרחוק</span>
+            </div>
+          </div>
+          <div class="zig-art" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#8052ff" stroke-width="1">
+              <rect x="56" y="52" width="88" height="96" rx="10"/>
+              <circle cx="82" cy="92" r="7" stroke="#ffb829"/>
+              <circle cx="118" cy="92" r="7" stroke="#ffb829"/>
+              <path d="M78 122h44" stroke="#15846e"/>
+              <path d="M100 20v24M100 156v24" stroke="#9a9a9a" opacity=".4"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="zig rv">
+          <div>
+            <span class="label dim">Water</span>
+            <h3>דוד חכם</h3>
+            <p>
+              מתחמם רק כשצריך, לפי שעות ולפי מזג האוויר.
+              זה הרכיב שמחזיר את ההשקעה הכי מהר.
+            </p>
+            <div class="tags">
+              <span class="tag">חיסכון בחשמל</span>
+              <span class="tag">תזמון יומי</span>
+              <span class="tag">הפעלה מרחוק</span>
+            </div>
+          </div>
+          <div class="zig-art" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#8052ff" stroke-width="1">
+              <rect x="66" y="38" width="68" height="124" rx="34"/>
+              <path d="M100 66c0 0 20 22 20 36a20 20 0 0 1-40 0c0-14 20-36 20-36Z" stroke="#ffb829"/>
+              <path d="M76 150h48" stroke="#15846e"/>
+              <path d="M40 80h16M144 80h16" stroke="#9a9a9a" opacity=".4"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── PROCESS ────────────────────────────────────────────── -->
+    <section class="sec" id="process">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="label">02 — איך זה עובד</span>
+          <h2>ארבעה צעדים, בלי הפתעות.</h2>
+        </div>
+        <div class="steps rv">
+          <div class="step">
+            <div class="step-n">01</div>
+            <h3>שיחה קצרה</h3>
+            <p>מבינים מה הבית צריך, כמה חדרים ומה התקציב.</p>
+          </div>
+          <div class="step">
+            <div class="step-n">02</div>
+            <h3>הצעה מפורטת</h3>
+            <p>תוך 24 שעות, עם פירוט מלא של הציוד והעבודה.</p>
+          </div>
+          <div class="step">
+            <div class="step-n">03</div>
+            <h3>התקנה</h3>
+            <p>חשמלאי מוסמך בעל רישיון מגיע, מתקין ומגדיר הכל.</p>
+          </div>
+          <div class="step">
+            <div class="step-n">04</div>
+            <h3>ליווי</h3>
+            <p>מדריכים אותך על האפליקציה, ונשארים זמינים.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING ────────────────────────────────────────────── -->
+    <section class="sec" id="pricing">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="label">03 — חבילות</span>
+          <h2>מנורה אחת או בית שלם.</h2>
+          <p>
+            כל חבילה כוללת התקנה מקצועית, הגדרת Tuya ואחריות.
+            אין מחיר קבוע — הוא תלוי בגודל הבית ובמספר הנקודות.
+          </p>
+        </div>
+
+        <div class="plans">
+          <article class="plan rv">
+            <div class="plan-name">
+              <h3>חיסכון</h3>
+              <span>דירת סטודיו או חדר אחד</span>
+            </div>
+            <ul class="plan-items">
+              <li>2 מנורות חכמות</li><li>שקע חכם</li>
+              <li>מצלמה בסיסית</li><li>הגדרת Tuya</li><li>אחריות שנה</li>
+            </ul>
+            <a href="#quote" class="ghost">לתמחור <span class="ar" aria-hidden="true">←</span></a>
+          </article>
+
+          <article class="plan rv">
+            <div class="plan-name">
+              <h3>סטארטר</h3>
+              <span>התחלה חכמה לדירה קטנה</span>
+            </div>
+            <ul class="plan-items">
+              <li>4 מנורות חכמות</li><li>2 שקעים חכמים</li>
+              <li>מצלמה בסיסית</li><li>הגדרת Tuya</li><li>אחריות שנה</li>
+            </ul>
+            <a href="#quote" class="ghost">לתמחור <span class="ar" aria-hidden="true">←</span></a>
+          </article>
+
+          <article class="plan rv">
+            <div class="plan-name">
+              <h3>אבטחה בסיסית</h3>
+              <span>מצלמות לפתחי הבית</span>
+            </div>
+            <ul class="plan-items">
+              <li>2 מצלמות HD</li><li>התראות תנועה</li>
+              <li>אחסון ענן</li><li>הגדרה מלאה</li><li>אחריות שנה</li>
+            </ul>
+            <a href="#quote" class="ghost">לתמחור <span class="ar" aria-hidden="true">←</span></a>
+          </article>
+
+          <article class="plan mark rv">
+            <div class="plan-name">
+              <h3>בית חכם</h3>
+              <span>הפתרון המלא לדירה ממוצעת · הכי מבוקש</span>
+            </div>
+            <ul class="plan-items">
+              <li>8 מנורות חכמות</li><li>4 שקעים חכמים</li>
+              <li>2 מצלמות HD</li><li>דוד חכם</li>
+              <li>תרחישים אישיים</li><li>אחריות שנתיים</li>
+            </ul>
+            <a href="#quote" class="ghost">לתמחור <span class="ar" aria-hidden="true">←</span></a>
+          </article>
+
+          <article class="plan rv">
+            <div class="plan-name">
+              <h3>אבטחה מתקדמת</h3>
+              <span>4 מצלמות לבית פרטי</span>
+            </div>
+            <ul class="plan-items">
+              <li>4 מצלמות HD</li><li>ראיית לילה</li>
+              <li>אחסון מורחב</li><li>התראות חכמות</li><li>אחריות שנתיים</li>
+            </ul>
+            <a href="#quote" class="ghost">לתמחור <span class="ar" aria-hidden="true">←</span></a>
+          </article>
+
+          <article class="plan rv">
+            <div class="plan-name">
+              <h3>פרימיום 4K</h3>
+              <span>וילה או עסק</span>
+            </div>
+            <ul class="plan-items">
+              <li>4 מצלמות 4K</li><li>כיסוי היקפי</li>
+              <li>אחסון ענן מורחב</li><li>התקנה מותאמת</li>
+              <li>אחריות שנתיים ועדיפות בשירות</li>
+            </ul>
+            <a href="#quote" class="ghost">לתמחור <span class="ar" aria-hidden="true">←</span></a>
+          </article>
+
+          <article class="plan rv">
+            <div class="plan-name">
+              <h3>מותאמת אישית</h3>
+              <span>בונים יחד בדיוק מה שצריך</span>
+            </div>
+            <ul class="plan-items">
+              <li>כל שילוב של רכיבים</li><li>מנעול חכם</li>
+              <li>חיישני נזילה ועשן</li><li>אוטומציות מתקדמות</li>
+            </ul>
+            <a href="#quote" class="ghost">לתמחור <span class="ar" aria-hidden="true">←</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── QUOTE ──────────────────────────────────────────────── -->
+    <section class="sec" id="quote">
+      <div class="wrap quote">
+        <aside class="rv">
+          <span class="label">04 — הצעת מחיר</span>
+          <h2 style="font-size:clamp(2rem,4.6vw,3.4rem);margin-block:16px 0">
+            שלח פרטים, נחזור תוך 24 שעות.
+          </h2>
+          <ul class="quote-list">
+            <li>
+              <b>מענה מהיר</b>
+              <span>חוזרים אליך עם הצעה מפורטת ביום העסקים הקרוב.</span>
+            </li>
+            <li>
+              <b>עבודה באחריות</b>
+              <span>חשמלאי מוסמך בעל רישיון, חלקים מקוריים ואחריות מלאה.</span>
+            </li>
+            <li>
+              <b>הכל באפליקציה אחת</b>
+              <span>אנחנו מגדירים את Tuya ומדריכים אותך אישית.</span>
+            </li>
+          </ul>
+        </aside>
+
+        <form id="quote-form" class="rv" aria-label="טופס בקשת הצעת מחיר" novalidate>
+          <div class="grid">
+            <div class="field">
+              <label for="q-name">שם מלא *</label>
+              <input id="q-name" name="name" type="text" placeholder="ישראל ישראלי"
+                     autocomplete="name" required aria-required="true"
+                     aria-invalid="false" aria-describedby="q-name-error">
+              <span id="q-name-error" class="err" role="alert" hidden>נא למלא שם מלא</span>
+            </div>
+
+            <div class="field">
+              <label for="q-phone">טלפון *</label>
+              <input id="q-phone" name="phone" type="tel" dir="ltr" inputmode="tel"
+                     placeholder="05X-XXXXXXX" autocomplete="tel" required aria-required="true"
+                     aria-invalid="false" aria-describedby="q-phone-error">
+              <span id="q-phone-error" class="err" role="alert" hidden>נא למלא מספר טלפון תקין (לפחות 9 ספרות)</span>
+            </div>
+
+            <div class="field">
+              <label for="q-city">עיר / אזור</label>
+              <input id="q-city" name="city" type="text" placeholder="תל אביב, באר שבע..."
+                     autocomplete="address-level2">
+            </div>
+
+            <div class="field">
+              <label for="q-type">סוג נכס</label>
+              <select id="q-type" name="propertyType">
+                <option>דירה</option>
+                <option>בית פרטי</option>
+                <option>וילה</option>
+                <option>משרד / עסק</option>
+              </select>
+            </div>
+
+            <fieldset class="field f-full chips-set">
+              <legend>מה מעניין אותך?</legend>
+              <div class="chips">
+                <label class="chip"><input type="checkbox" name="interest" value="מנורות"> מנורות חכמות</label>
+                <label class="chip"><input type="checkbox" name="interest" value="מצלמות"> מצלמות אבטחה</label>
+                <label class="chip"><input type="checkbox" name="interest" value="שקעים"> שקעים חכמים</label>
+                <label class="chip"><input type="checkbox" name="interest" value="דוד"> דוד חם חכם</label>
+                <label class="chip"><input type="checkbox" name="interest" value="מנעול"> מנעול חכם</label>
+                <label class="chip"><input type="checkbox" name="interest" value="הכל"> הכל</label>
+              </div>
+            </fieldset>
+
+            <div class="field f-full">
+              <label for="q-notes">הערות נוספות</label>
+              <textarea id="q-notes" name="notes" placeholder="גודל הדירה, מספר חדרים, שאלות..."></textarea>
+            </div>
+
+            <div class="f-full">
+              <button type="submit" class="pill send">שלח ואקבל הצעת מחיר</button>
+            </div>
+
+            <p id="form-status" class="status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── WHATSAPP ─────────────────────────────────────────────── -->
+  <a id="wa-fab" class="wa" href="#" target="_blank" rel="noopener"
+     aria-label="פתיחת שיחת וואטסאפ עם DrayConnect">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/>
+    </svg>
+    <span class="wa-label">וואטסאפ</span>
+  </a>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-col">
+          <span class="label dim">צור קשר</span>
+          <a href="tel:0528985233" dir="ltr">052-898-5233</a>
+          <a href="mailto:yakirdray1@gmail.com">yakirdray1@gmail.com</a>
+        </div>
+        <div class="foot-col">
+          <span class="label dim">שירותים</span>
+          <a href="#services">תאורה חכמה</a>
+          <a href="#services">מצלמות אבטחה</a>
+          <a href="#services">שקעים חכמים</a>
+          <a href="#services">דוד חכם</a>
+        </div>
+        <div class="foot-col">
+          <span class="label dim">מידע</span>
+          <a href="#process">איך זה עובד</a>
+          <a href="#pricing">חבילות</a>
+          <a href="accessibility.html">הצהרת נגישות</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 DrayConnect. כל הזכויות שמורות.</span>
+        <span>DrayConnect</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="v2.js" defer></script>
+  <script src="a11y.js" defer></script>
+</body>
+</html>
